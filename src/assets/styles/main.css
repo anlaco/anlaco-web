@@ -6,10 +6,399 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family: var(--primary-font);
+  color: var(--anlaco-anthracite);
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-md);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.3;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+
+p {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--anlaco-yellow-industrial);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  font-family: var(--primary-font);
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 2px solid transparent;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: 1rem;
+  border-radius: 4px; /* Minimalist border-radius */
+  transition: all 0.2s ease-in-out;
+  text-decoration: none; /* Ensure links styled as buttons don't have underlines */
+}
+
+.btn-primary {
+  background-color: var(--anlaco-yellow-industrial);
+  color: var(--anlaco-anthracite);
+  border-color: var(--anlaco-yellow-industrial);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #e6c200; /* Darker yellow */
+  border-color: #e6c200;
+  color: var(--anlaco-anthracite);
+  outline: none;
+}
+
+.btn-secondary {
+  background-color: var(--anlaco-anthracite);
+  color: var(--anlaco-yellow-industrial);
+  border-color: var(--anlaco-anthracite);
+}
+
+.btn-secondary:hover, .btn-secondary:focus {
+  background-color: #3a3a3a; /* Slightly lighter anthracite */
+  border-color: #3a3a3a;
+  color: var(--anlaco-yellow-industrial);
+  outline: none;
+}
+
+/* Alternative secondary button: Outline style */
+.btn-outline-primary {
+  background-color: transparent;
+  color: var(--anlaco-yellow-industrial);
+  border-color: var(--anlaco-yellow-industrial);
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+  background-color: var(--anlaco-yellow-industrial);
+  color: var(--anlaco-anthracite);
+  outline: none;
+}
+
+.btn-outline-secondary {
+  background-color: transparent;
+  color: var(--anlaco-anthracite);
+  border-color: var(--anlaco-anthracite);
+}
+
+.btn-outline-secondary:hover, .btn-outline-secondary:focus {
+  background-color: var(--anlaco-anthracite);
+  color: #FFFFFF; /* White text on anthracite bg */
+  outline: none;
+}
+
+/* Content Cards */
+.content-card {
+  background-color: #FFFFFF; /* White or a very light gray background */
+  border: 1px solid #e0e0e0; /* Softer border for a modern look */
+  border-radius: 4px; /* Consistent with button border-radius */
+  padding: var(--spacing-lg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+  transition: box-shadow 0.3s ease-in-out;
+  overflow: hidden; /* Ensures content respects border-radius */
+}
+
+.content-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Slightly more pronounced shadow on hover */
+}
+
+/* Optional: Card Header, Body, Footer structure */
+.card-header {
+  padding-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.card-header h1, .card-header h2, .card-header h3, .card-header h4, .card-header h5, .card-header h6 {
+  margin-bottom: 0; /* Remove default bottom margin for headings in card header */
+}
+
+.card-title { /* Specific class if needed for card titles */
+  color: var(--anlaco-anthracite);
+}
+
+.card-body {
+  /* Specific styles for card body if needed */
+}
+
+.card-footer {
+  padding-top: var(--spacing-md);
+  margin-top: var(--spacing-md);
+  border-top: 1px solid #e0e0e0;
+  text-align: right; /* Example alignment for actions */
+}
+
+/* Card with industrial yellow accent */
+.content-card.accent-yellow {
+  border-top: 4px solid var(--anlaco-yellow-industrial);
+}
+
+/* Card with anthracite accent */
+.content-card.accent-anthracite {
+  border-top: 4px solid var(--anlaco-anthracite);
+}
+
+/* Forms */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="number"],
+textarea,
+select {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-family: var(--primary-font);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--anlaco-anthracite);
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da; /* Standard neutral border */
+  border-radius: 4px; /* Consistent with buttons and cards */
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--anlaco-yellow-industrial);
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25); /* Yellow glow, matching industrial yellow */
+}
+
+textarea {
+  resize: vertical; /* Allow vertical resize, disable horizontal */
+  min-height: 80px;
+}
+
+select {
+  appearance: none; /* Remove default system appearance */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-md) center;
+  background-size: 16px 12px;
+  padding-right: calc(var(--spacing-md) + 20px); /* Make space for the arrow */
+}
+
+/* Style for select when multiple options are visible (e.g. size attribute > 1) */
+select[multiple], select[size] {
+    background-image: none; /* Remove custom arrow when it's a list box */
+    padding-right: var(--spacing-md); /* Reset padding */
+}
+
+
+/* Basic form group styling for labels (optional but good practice) */
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-weight: bold;
+}
+
+/* Checkbox and Radio (basic styling, can be enhanced further) */
+input[type="checkbox"],
+input[type="radio"] {
+  margin-right: var(--spacing-sm);
+  vertical-align: middle;
+}
+
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+  outline: 2px solid var(--anlaco-yellow-industrial);
+  outline-offset: 2px;
 }
 
 /* Variables de color */
 :root {
-  --primary-color: #007bff;
+  --anlaco-anthracite: #232323;
+  --anlaco-yellow-industrial: #FFD700;
+  --primary-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --spacing-unit: 0.25rem;
+  --spacing-xs: var(--spacing-unit);
+  --spacing-sm: calc(var(--spacing-unit) * 2);
+  --spacing-md: calc(var(--spacing-unit) * 4);
+  --spacing-lg: calc(var(--spacing-unit) * 6);
+  --spacing-xl: calc(var(--spacing-unit) * 8);
+  --spacing-xxl: calc(var(--spacing-unit) * 12);
+}
+
+/* Utility classes for margins */
+.mt-xs { margin-top: var(--spacing-xs); }
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+.mt-xxl { margin-top: var(--spacing-xxl); }
+
+.mb-xs { margin-bottom: var(--spacing-xs); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+.mb-xxl { margin-bottom: var(--spacing-xxl); }
+
+.ml-xs { margin-left: var(--spacing-xs); }
+.ml-sm { margin-left: var(--spacing-sm); }
+.ml-md { margin-left: var(--spacing-md); }
+.ml-lg { margin-left: var(--spacing-lg); }
+.ml-xl { margin-left: var(--spacing-xl); }
+.ml-xxl { margin-left: var(--spacing-xxl); }
+
+.mr-xs { margin-right: var(--spacing-xs); }
+.mr-sm { margin-right: var(--spacing-sm); }
+.mr-md { margin-right: var(--spacing-md); }
+.mr-lg { margin-right: var(--spacing-lg); }
+.mr-xl { margin-right: var(--spacing-xl); }
+.mr-xxl { margin-right: var(--spacing-xxl); }
+
+.mx-xs { margin-left: var(--spacing-xs); margin-right: var(--spacing-xs); }
+.mx-sm { margin-left: var(--spacing-sm); margin-right: var(--spacing-sm); }
+.mx-md { margin-left: var(--spacing-md); margin-right: var(--spacing-md); }
+.mx-lg { margin-left: var(--spacing-lg); margin-right: var(--spacing-lg); }
+.mx-xl { margin-left: var(--spacing-xl); margin-right: var(--spacing-xl); }
+.mx-xxl { margin-left: var(--spacing-xxl); margin-right: var(--spacing-xxl); }
+
+.my-xs { margin-top: var(--spacing-xs); margin-bottom: var(--spacing-xs); }
+.my-sm { margin-top: var(--spacing-sm); margin-bottom: var(--spacing-sm); }
+.my-md { margin-top: var(--spacing-md); margin-bottom: var(--spacing-md); }
+.my-lg { margin-top: var(--spacing-lg); margin-bottom: var(--spacing-lg); }
+.my-xl { margin-top: var(--spacing-xl); margin-bottom: var(--spacing-xl); }
+.my-xxl { margin-top: var(--spacing-xxl); margin-bottom: var(--spacing-xxl); }
+
+/* Utility classes for paddings */
+.pt-xs { padding-top: var(--spacing-xs); }
+.pt-sm { padding-top: var(--spacing-sm); }
+.pt-md { padding-top: var(--spacing-md); }
+.pt-lg { padding-top: var(--spacing-lg); }
+.pt-xl { padding-top: var(--spacing-xl); }
+.pt-xxl { padding-top: var(--spacing-xxl); }
+
+.pb-xs { padding-bottom: var(--spacing-xs); }
+.pb-sm { padding-bottom: var(--spacing-sm); }
+.pb-md { padding-bottom: var(--spacing-md); }
+.pb-lg { padding-bottom: var(--spacing-lg); }
+.pb-xl { padding-bottom: var(--spacing-xl); }
+.pb-xxl { padding-bottom: var(--spacing-xxl); }
+
+.pl-xs { padding-left: var(--spacing-xs); }
+.pl-sm { padding-left: var(--spacing-sm); }
+.pl-md { padding-left: var(--spacing-md); }
+.pl-lg { padding-left: var(--spacing-lg); }
+.pl-xl { padding-left: var(--spacing-xl); }
+.pl-xxl { padding-left: var(--spacing-xxl); }
+
+.pr-xs { padding-right: var(--spacing-xs); }
+.pr-sm { padding-right: var(--spacing-sm); }
+.pr-md { padding-right: var(--spacing-md); }
+.pr-lg { padding-right: var(--spacing-lg); }
+.pr-xl { padding-right: var(--spacing-xl); }
+.pr-xxl { padding-right: var(--spacing-xxl); }
+
+.px-xs { padding-left: var(--spacing-xs); padding-right: var(--spacing-xs); }
+.px-sm { padding-left: var(--spacing-sm); padding-right: var(--spacing-sm); }
+.px-md { padding-left: var(--spacing-md); padding-right: var(--spacing-md); }
+.px-lg { padding-left: var(--spacing-lg); padding-right: var(--spacing-lg); }
+.px-xl { padding-left: var(--spacing-xl); padding-right: var(--spacing-xl); }
+.px-xxl { padding-left: var(--spacing-xxl); padding-right: var(--spacing-xxl); }
+
+.py-xs { padding-top: var(--spacing-xs); padding-bottom: var(--spacing-xs); }
+.py-sm { padding-top: var(--spacing-sm); padding-bottom: var(--spacing-sm); }
+.py-md { padding-top: var(--spacing-md); padding-bottom: var(--spacing-md); }
+.py-lg { padding-top: var(--spacing-lg); padding-bottom: var(--spacing-lg); }
+.py-xl { padding-top: var(--spacing-xl); padding-bottom: var(--spacing-xl); }
+.py-xxl { padding-top: var(--spacing-xxl); padding-bottom: var(--spacing-xxl); }
+
+/* Responsive Adjustments */
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+  main { /* Corrected selector to 'main' from '.main' */
+    padding: var(--spacing-md) var(--spacing-sm); /* Reduce padding for main content */
+  }
+
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.8rem; }
+  h3 { font-size: 1.5rem; }
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  main { /* Corrected selector to 'main' from '.main' */
+    padding: var(--spacing-sm); /* Further reduce padding */
+  }
+
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.6rem; }
+  h3 { font-size: 1.4rem; }
+
+  /* Stack buttons if they are direct siblings and need to wrap */
+  .btn + .btn,
+  .btn-group .btn + .btn { /* If using a .btn-group class */
+    margin-top: var(--spacing-sm);
+    margin-left: 0; /* Reset margin-left if they were inline */
+  }
+
+  /* Ensure form elements are easily tappable */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="number"],
+  textarea,
+  select {
+    font-size: 1rem; /* Ensure font size isn't too small on mobile */
+  }
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.4rem; }
+  h3 { font-size: 1.2rem; }
+
+  .btn {
+    padding: var(--spacing-xs) var(--spacing-md); /* Slightly smaller padding for buttons */
+    font-size: 0.9rem;
+  }
 }
