@@ -12,15 +12,68 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden; /* Prevenir doble scrollbar si el page-container maneja el suyo */
 }
 
-main {
+/* --- Estilos para el layout Flexbox (pantallas grandes) --- */
+.page-container {
+  display: flex;
+  flex-direction: row; /* Disposición horizontal */
   flex-grow: 1;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--spacing-lg) var(--spacing-md);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
 }
+
+/* section.page-section es para el modo Flexbox (pantallas grandes) */
+section.page-section {
+  flex-shrink: 0;
+  width: 100vw;
+  height: 100%;
+  overflow-y: auto;
+  /* El padding se mueve a .page-section-content */
+  scroll-snap-align: start;
+  display: flex; /* Para que page-section-content pueda tener height: 100% */
+  flex-direction: column; /* Para que page-section-content pueda tener height: 100% */
+}
+
+/* --- Estilos para el layout con Swiper (pantallas pequeñas) --- */
+.page-container-swiper {
+  flex-grow: 1; /* Ocupa el espacio vertical disponible */
+  width: 100%;
+  overflow: hidden; /* Swiper maneja su propio overflow */
+  display: flex; /* Para que Swiper (y .mySwiper) puedan ocupar toda la altura */
+}
+
+.mySwiper {
+  width: 100%;
+  height: 100%;
+}
+
+/* .page-section como SwiperSlide */
+.swiper-slide.page-section {
+  height: 100%; /* Asegura que el slide ocupe toda la altura del contenedor Swiper */
+  overflow-y: auto; /* Permite scroll vertical dentro de cada slide */
+  /* El padding se mueve a .page-section-content */
+  box-sizing: border-box; /* Para que el padding no afecte el cálculo de altura/ancho del slide */
+  display: flex; /* Para que page-section-content pueda tener height: 100% */
+  flex-direction: column; /* Para que page-section-content pueda tener height: 100% */
+}
+
+/* --- Contenido interno de cada sección/slide --- */
+.page-section-content {
+  width: 100%;
+  max-width: 1200px; /* Centra el contenido real */
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-md); /* Padding original de main/page-section */
+  height: 100%; /* Ocupa la altura disponible dentro de su contenedor (page-section o swiper-slide) */
+  display: flex;
+  flex-direction: column; /* Para que el contenido interno se distribuya bien */
+  box-sizing: border-box;
+}
+
 
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: var(--spacing-md);
@@ -259,6 +312,12 @@ input[type="radio"]:focus {
   --spacing-lg: calc(var(--spacing-unit) * 6);
   --spacing-xl: calc(var(--spacing-unit) * 8);
   --spacing-xxl: calc(var(--spacing-unit) * 12);
+
+  /* Colores para Swiper (pueden ser los mismos) */
+  --swiper-navigation-color: var(--anlaco-yellow-industrial);
+  --swiper-pagination-color: var(--anlaco-yellow-industrial);
+  --swiper-pagination-bullet-inactive-color: var(--anlaco-anthracite);
+  --swiper-pagination-bullet-inactive-opacity: 0.5;
 }
 
 /* Utility classes for margins */
@@ -350,9 +409,10 @@ input[type="radio"]:focus {
 /* Responsive Adjustments */
 
 /* Medium devices (tablets, less than 992px) */
+/* Estos ajustes de padding ahora van a .page-section-content */
 @media (max-width: 991.98px) {
-  main { /* Corrected selector to 'main' from '.main' */
-    padding: var(--spacing-md) var(--spacing-sm); /* Reduce padding for main content */
+  .page-section-content {
+    padding: var(--spacing-md) var(--spacing-sm); /* Reducir padding */
   }
 
   h1 { font-size: 2.2rem; }
@@ -361,10 +421,15 @@ input[type="radio"]:focus {
 }
 
 /* Small devices (landscape phones, less than 768px) */
+/* Aquí es donde Swiper se activa. Los estilos base de Swiper y .page-section (como SwiperSlide) ya están definidos. */
+/* El padding también se ajusta para .page-section-content */
 @media (max-width: 767.98px) {
-  main { /* Corrected selector to 'main' from '.main' */
-    padding: var(--spacing-sm); /* Further reduce padding */
+  .page-section-content {
+    padding: var(--spacing-sm); /* Reducir padding */
   }
+
+  /* Si necesitamos ocultar el .page-container (flex) cuando Swiper está activo,
+     pero la lógica de JS ya lo hace al no renderizarlo. */
 
   h1 { font-size: 2rem; }
   h2 { font-size: 1.6rem; }
