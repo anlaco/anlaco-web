@@ -7,6 +7,7 @@ import Designs from './pages/Designs';
 import Shop from './pages/Shop';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import ProductPage from './pages/ProductPage'; // Importar la nueva página de producto
 import './assets/styles/main.css'; // Asegurarse de importar los estilos globales
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/designs" element={<Designs />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/product/:productId" element={<ProductPage />} /> {/* Nueva ruta dinámica */}
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
