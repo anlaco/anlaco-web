@@ -1,5 +1,5 @@
 // Este archivo contiene los datos de los productos de la tienda.
-// Productos reales que un maker tendría en stock después de comprar al por mayor
+// Productos reales con márgenes justos (10-20% sobre coste + gastos)
 
 export const products = [
   {
@@ -7,7 +7,9 @@ export const products = [
     name: 'Perfil aluminio 40x40 V-Slot',
     description: 'Perfil de aluminio estructural tipo V-Slot, ideal para impresoras 3D, CNC y proyectos de automatización. Aleación 6063-T5 con acabado anodizado. Compatible con ruedas V-Wheel y fijaciones estándar.',
     shortDescription: 'Perfil de aluminio V-Slot 40x40mm, aleación 6063-T5.',
-    price: '12€',
+    price: '14€',
+    costPrice: '10€',
+    margin: '15%',
     imageUrl: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop',
     dimensions: {
       width: '4 cm',
@@ -29,7 +31,9 @@ export const products = [
     name: 'Tornillos M5x10mm (Pack 50 uds)',
     description: 'Tornillos de cabeza Allen M5x10mm fabricados en acero inoxidable A2 (AISI 304). Perfectos para fijaciones en perfiles de aluminio. Cabeza hexagonal interior para llave Allen de 4mm.',
     shortDescription: 'Pack de 50 tornillos M5x10mm, acero inoxidable A2.',
-    price: '5.50€',
+    price: '6.50€',
+    costPrice: '4.80€',
+    margin: '12%',
     imageUrl: 'https://images.unsplash.com/photo-1609205807107-e8ec2120f9de?w=400&h=300&fit=crop',
     dimensions: {
       width: 'N/A',
@@ -52,7 +56,9 @@ export const products = [
     name: 'Guías lineales SBR16 (Par 40cm)',
     description: 'Par de guías lineales SBR16 de 40cm con rodamientos lineales LM16UU. Ideales para ejes X/Y de impresoras 3D. Acero templado rectificado con tolerancias precisas.',
     shortDescription: 'Par de guías lineales SBR16 de 40cm con rodamientos.',
-    price: '18€',
+    price: '22€',
+    costPrice: '16€',
+    margin: '18%',
     imageUrl: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=400&h=300&fit=crop',
     dimensions: {
       width: '1.6 cm',
@@ -75,7 +81,9 @@ export const products = [
     name: 'Correas GT2 (5 metros)',
     description: 'Correa dentada GT2 de 6mm de ancho, paso 2mm. Refuerzo de fibra de vidrio para mayor resistencia. Perfecta para impresoras 3D y aplicaciones de precisión.',
     shortDescription: 'Correa dentada GT2 6mm, rollo de 5 metros.',
-    price: '8€',
+    price: '9.50€',
+    costPrice: '7€',
+    margin: '15%',
     imageUrl: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop',
     dimensions: {
       width: '6 mm',
@@ -98,7 +106,9 @@ export const products = [
     name: 'Poleas GT2 20 dientes (Pack 5 uds)',
     description: 'Pack de 5 poleas GT2 de 20 dientes para eje de 5mm. Aluminio anodizado con prisioneros incluidos. Compatible con correas GT2 de 6mm.',
     shortDescription: 'Pack de 5 poleas GT2 20T para eje 5mm.',
-    price: '12€',
+    price: '14€',
+    costPrice: '10.50€',
+    margin: '13%',
     imageUrl: 'https://images.unsplash.com/photo-1609205807107-e8ec2120f9de?w=400&h=300&fit=crop',
     dimensions: {
       width: '1.27 cm',
@@ -121,7 +131,9 @@ export const products = [
     name: 'Tuercas martillo M5 (Pack 20 uds)',
     description: 'Tuercas martillo M5 para perfiles de aluminio. Diseño especial que se desliza por las ranuras del perfil. Acero cincado para mayor durabilidad.',
     shortDescription: 'Pack de 20 tuercas martillo M5 para perfiles.',
-    price: '6€',
+    price: '7.20€',
+    costPrice: '5.20€',
+    margin: '18%',
     imageUrl: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=400&h=300&fit=crop',
     dimensions: {
       width: '1 cm',
@@ -144,7 +156,9 @@ export const products = [
     name: 'Rodamientos 608ZZ (Pack 10 uds)',
     description: 'Rodamientos de bolas 608ZZ (8x22x7mm) con protección metálica. Perfectos para ruedas, poleas y aplicaciones generales. Calidad industrial.',
     shortDescription: 'Pack de 10 rodamientos 608ZZ (8x22x7mm).',
-    price: '9€',
+    price: '10.80€',
+    costPrice: '8€',
+    margin: '15%',
     imageUrl: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop',
     dimensions: {
       width: '2.2 cm',
@@ -167,7 +181,9 @@ export const products = [
     name: 'Varillas roscadas M8 (Pack 2 uds x 1m)',
     description: 'Pack de 2 varillas roscadas M8 de 1 metro de longitud. Acero cincado clase 8.8. Ideales para ejes Z de impresoras 3D y estructuras.',
     shortDescription: 'Pack de 2 varillas roscadas M8 x 1m.',
-    price: '14€',
+    price: '16.50€',
+    costPrice: '12.50€',
+    margin: '12%',
     imageUrl: 'https://images.unsplash.com/photo-1609205807107-e8ec2120f9de?w=400&h=300&fit=crop',
     dimensions: {
       width: '8 mm',

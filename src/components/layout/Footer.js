@@ -5,12 +5,22 @@ function Footer() {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer style={{
+    <footer className="premium-footer" style={{
       backgroundColor: 'var(--anlaco-anthracite)',
       color: 'white',
       padding: '3rem 0 1rem 0',
-      marginTop: 'auto'
+      marginTop: 'auto',
+      borderTop: '2px solid var(--neon-cyan)',
+      position: 'relative'
     }}>
+      <div className="urban-line" style={{ 
+        position: 'absolute', 
+        top: '0', 
+        left: '0', 
+        right: '0', 
+        height: '2px', 
+        background: 'linear-gradient(90deg, var(--neon-cyan), var(--neon-yellow), var(--neon-cyan))' 
+      }}></div>
       <div style={{ 
         maxWidth: '1200px', 
         margin: '0 auto', 
@@ -24,8 +34,8 @@ function Footer() {
           marginBottom: '2rem'
         }}>
           {/* Sobre ANLACO */}
-          <div>
-            <h3 style={{ 
+          <div className="footer-section">
+            <h3 className="neon-glow-yellow" style={{ 
               color: 'var(--anlaco-yellow-industrial)',
               marginBottom: '1rem',
               display: 'flex',
@@ -37,7 +47,7 @@ function Footer() {
             </h3>
             <p style={{ 
               lineHeight: '1.6',
-              color: '#ccc',
+              color: 'var(--neon-cyan)',
               marginBottom: '1rem'
             }}>
               Componentes maker de calidad, directo de maker a maker. 
@@ -48,15 +58,19 @@ function Footer() {
               gap: '1rem',
               alignItems: 'center'
             }}>
-              <span style={{ fontSize: '0.9rem', color: '#ccc' }}>
+              <span className="badge-premium" style={{ 
+                fontSize: '0.9rem', 
+                color: 'var(--neon-cyan)',
+                textShadow: '0 0 5px var(--neon-cyan)'
+              }}>
                 📍 Enviamos desde España
               </span>
             </div>
           </div>
 
           {/* Enlaces Rápidos */}
-          <div>
-            <h4 style={{ 
+          <div className="footer-section">
+            <h4 className="neon-glow-yellow" style={{ 
               color: 'var(--anlaco-yellow-industrial)',
               marginBottom: '1rem'
             }}>
@@ -70,13 +84,14 @@ function Footer() {
               <li style={{ marginBottom: '0.5rem' }}>
                 <Link 
                   to="/shop" 
+                  className="footer-link"
                   style={{ 
-                    color: '#ccc', 
+                    color: 'var(--neon-cyan)', 
                     textDecoration: 'none',
-                    transition: 'color 0.2s'
+                    transition: 'all 0.2s'
                   }}
                   onMouseEnter={(e) => e.target.style.color = 'var(--anlaco-yellow-industrial)'}
-                  onMouseLeave={(e) => e.target.style.color = '#ccc'}
+                  onMouseLeave={(e) => e.target.style.color = 'var(--neon-cyan)'}
                 >
                   🛒 Tienda
                 </Link>
@@ -84,13 +99,14 @@ function Footer() {
               <li style={{ marginBottom: '0.5rem' }}>
                 <Link 
                   to="/designs" 
+                  className="footer-link"
                   style={{ 
-                    color: '#ccc', 
+                    color: 'var(--neon-cyan)', 
                     textDecoration: 'none',
-                    transition: 'color 0.2s'
+                    transition: 'all 0.2s'
                   }}
                   onMouseEnter={(e) => e.target.style.color = 'var(--anlaco-yellow-industrial)'}
-                  onMouseLeave={(e) => e.target.style.color = '#ccc'}
+                  onMouseLeave={(e) => e.target.style.color = 'var(--neon-cyan)'}
                 >
                   🎯 Mis Proyectos
                 </Link>
@@ -98,13 +114,14 @@ function Footer() {
               <li style={{ marginBottom: '0.5rem' }}>
                 <Link 
                   to="/about" 
+                  className="footer-link"
                   style={{ 
-                    color: '#ccc', 
+                    color: 'var(--neon-cyan)', 
                     textDecoration: 'none',
-                    transition: 'color 0.2s'
+                    transition: 'all 0.2s'
                   }}
                   onMouseEnter={(e) => e.target.style.color = 'var(--anlaco-yellow-industrial)'}
-                  onMouseLeave={(e) => e.target.style.color = '#ccc'}
+                  onMouseLeave={(e) => e.target.style.color = 'var(--neon-cyan)'}
                 >
                   👨‍🔧 Sobre Mí
                 </Link>
@@ -112,13 +129,14 @@ function Footer() {
               <li style={{ marginBottom: '0.5rem' }}>
                 <Link 
                   to="/contact" 
+                  className="footer-link"
                   style={{ 
-                    color: '#ccc', 
+                    color: 'var(--neon-cyan)', 
                     textDecoration: 'none',
-                    transition: 'color 0.2s'
+                    transition: 'all 0.2s'
                   }}
                   onMouseEnter={(e) => e.target.style.color = 'var(--anlaco-yellow-industrial)'}
-                  onMouseLeave={(e) => e.target.style.color = '#ccc'}
+                  onMouseLeave={(e) => e.target.style.color = 'var(--neon-cyan)'}
                 >
                   📧 Contacto
                 </Link>
@@ -127,27 +145,27 @@ function Footer() {
           </div>
 
           {/* Información */}
-          <div>
-            <h4 style={{ 
+          <div className="footer-section">
+            <h4 className="neon-glow-yellow" style={{ 
               color: 'var(--anlaco-yellow-industrial)',
               marginBottom: '1rem'
             }}>
               Información
             </h4>
-            <div style={{ color: '#ccc' }}>
-              <p style={{ marginBottom: '0.5rem' }}>
+            <div style={{ color: 'var(--neon-cyan)' }}>
+              <p className="info-item" style={{ marginBottom: '0.5rem' }}>
                 <strong>🕒 Actualizaciones:</strong><br/>
                 Stock actualizado semanalmente
               </p>
-              <p style={{ marginBottom: '0.5rem' }}>
+              <p className="info-item" style={{ marginBottom: '0.5rem' }}>
                 <strong>📦 Envíos:</strong><br/>
                 Gestión via Wallapop
               </p>
-              <p style={{ marginBottom: '0.5rem' }}>
+              <p className="info-item" style={{ marginBottom: '0.5rem' }}>
                 <strong>💰 Precios:</strong><br/>
                 Coste + gastos de envío
               </p>
-              <p style={{ marginBottom: '0.5rem' }}>
+              <p className="info-item" style={{ marginBottom: '0.5rem' }}>
                 <strong>🔧 Soporte:</strong><br/>
                 Consejos incluidos
               </p>
@@ -156,8 +174,8 @@ function Footer() {
         </div>
 
         {/* Separador */}
-        <div style={{
-          borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+        <div className="urban-line" style={{
+          borderTop: '1px solid var(--neon-cyan)',
           paddingTop: '1rem',
           display: 'flex',
           justifyContent: 'space-between',
@@ -165,7 +183,7 @@ function Footer() {
           flexWrap: 'wrap',
           gap: '1rem'
         }}>
-          <div style={{ color: '#ccc', fontSize: '0.9rem' }}>
+          <div style={{ color: 'var(--neon-cyan)', fontSize: '0.9rem' }}>
             © {currentYear} ANLACO. Hecho con ❤️ por un maker para makers.
           </div>
           <div style={{ 
@@ -173,11 +191,11 @@ function Footer() {
             gap: '1rem',
             alignItems: 'center',
             fontSize: '0.9rem',
-            color: '#ccc'
+            color: 'var(--neon-cyan)'
           }}>
-            <span>🚀 Desarrollado con React</span>
+            <span className="tech-badge">🚀 Desarrollado con React</span>
             <span>•</span>
-            <span>🌐 Desplegado en Vercel</span>
+            <span className="tech-badge">🌐 Desplegado en Vercel</span>
           </div>
         </div>
       </div>

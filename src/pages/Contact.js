@@ -26,19 +26,19 @@ function Contact() {
 
   return (
     <div className="py-lg">
-      <h1 className="mb-lg">📧 Contacto</h1>
+      <h1 className="mb-lg neon-glow-yellow">📧 Contacto</h1>
       
       {/* Introducción */}
       <div className="mb-xxl">
-        <div className="content-card accent-yellow">
+        <div className="content-card premium accent-yellow">
           <div className="card-body">
-            <h2 className="mb-md">💬 Hablemos</h2>
-            <p className="mb-md">
+            <h2 className="mb-md neon-glow-cyan">💬 Hablemos</h2>
+            <p className="mb-md" style={{ color: 'var(--neon-cyan)' }}>
               ¿Tienes dudas sobre algún componente? ¿Necesitas ayuda con tu proyecto? 
               ¿Buscas algo específico que no tengo en stock?
             </p>
-            <p className="mb-lg">
-              <strong>Escríbeme y te ayudo.</strong> Como maker, entiendo los desafíos 
+            <p className="mb-lg" style={{ color: 'var(--neon-cyan)' }}>
+              <strong style={{ color: 'var(--anlaco-yellow-industrial)' }}>Escríbeme y te ayudo.</strong> Como maker, entiendo los desafíos 
               y siempre intento echar una mano a la comunidad.
             </p>
           </div>
@@ -47,14 +47,14 @@ function Contact() {
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem' }}>
         {/* Formulario */}
-        <div className="content-card">
+        <div className="content-card premium">
           <div className="card-header">
-            <h3 className="card-title">📝 Envíame un mensaje</h3>
+            <h3 className="card-title neon-glow-cyan">📝 Envíame un mensaje</h3>
           </div>
           <div className="card-body">
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="name"><strong>Nombre *</strong></label>
+                <label htmlFor="name" style={{ color: 'var(--anlaco-yellow-industrial)' }}><strong>Nombre *</strong></label>
                 <input 
                   type="text" 
                   id="name" 
@@ -62,12 +62,13 @@ function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Tu nombre completo" 
+                  className="premium-input"
                   required
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="email"><strong>Email *</strong></label>
+                <label htmlFor="email" style={{ color: 'var(--anlaco-yellow-industrial)' }}><strong>Email *</strong></label>
                 <input 
                   type="email" 
                   id="email" 
@@ -75,17 +76,19 @@ function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="tu@email.com" 
+                  className="premium-input"
                   required
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="reason"><strong>Motivo de contacto</strong></label>
+                <label htmlFor="reason" style={{ color: 'var(--anlaco-yellow-industrial)' }}><strong>Motivo de contacto</strong></label>
                 <select 
                   id="reason" 
                   name="reason"
                   value={formData.reason}
                   onChange={handleChange}
+                  className="premium-input"
                 >
                   <option value="">Selecciona un motivo...</option>
                   <option value="consulta-tecnica">🔧 Consulta técnica</option>
@@ -98,7 +101,7 @@ function Contact() {
               </div>
 
               <div className="form-group">
-                <label htmlFor="subject"><strong>Asunto *</strong></label>
+                <label htmlFor="subject" style={{ color: 'var(--anlaco-yellow-industrial)' }}><strong>Asunto *</strong></label>
                 <input 
                   type="text" 
                   id="subject" 
@@ -106,12 +109,13 @@ function Contact() {
                   value={formData.subject}
                   onChange={handleChange}
                   placeholder="Ej: Consulta sobre perfiles V-Slot" 
+                  className="premium-input"
                   required
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="message"><strong>Mensaje *</strong></label>
+                <label htmlFor="message" style={{ color: 'var(--anlaco-yellow-industrial)' }}><strong>Mensaje *</strong></label>
                 <textarea 
                   id="message" 
                   name="message"
@@ -119,11 +123,12 @@ function Contact() {
                   onChange={handleChange}
                   rows="6" 
                   placeholder="Cuéntame en detalle lo que necesitas. Cuanta más información me des, mejor te podré ayudar..."
+                  className="premium-input"
                   required
                 ></textarea>
               </div>
 
-              <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
+              <button type="submit" className="btn btn-primary premium-btn" style={{ width: '100%' }}>
                 📧 Enviar Mensaje
               </button>
             </form>
@@ -133,56 +138,56 @@ function Contact() {
         {/* Información de contacto */}
         <div>
           {/* Tiempos de respuesta */}
-          <div className="content-card mb-lg">
+          <div className="content-card premium mb-lg">
             <div className="card-header">
-              <h3 className="card-title">⏱️ Tiempos de respuesta</h3>
+              <h3 className="card-title neon-glow-cyan">⏱️ Tiempos de respuesta</h3>
             </div>
             <div className="card-body">
               <div style={{ marginBottom: '1rem' }}>
-                <strong>📧 Consultas generales:</strong><br/>
-                <span style={{ color: '#666' }}>24-48 horas</span>
+                <strong style={{ color: 'var(--anlaco-yellow-industrial)' }}>📧 Consultas generales:</strong><br/>
+                <span style={{ color: 'var(--neon-cyan)' }}>24-48 horas</span>
               </div>
               <div style={{ marginBottom: '1rem' }}>
-                <strong>🔧 Consultas técnicas:</strong><br/>
-                <span style={{ color: '#666' }}>1-2 días (incluye investigación)</span>
+                <strong style={{ color: 'var(--anlaco-yellow-industrial)' }}>🔧 Consultas técnicas:</strong><br/>
+                <span style={{ color: 'var(--neon-cyan)' }}>1-2 días (incluye investigación)</span>
               </div>
               <div style={{ marginBottom: '1rem' }}>
-                <strong>🛒 Consultas de stock:</strong><br/>
-                <span style={{ color: '#666' }}>Mismo día</span>
+                <strong style={{ color: 'var(--anlaco-yellow-industrial)' }}>🛒 Consultas de stock:</strong><br/>
+                <span style={{ color: 'var(--neon-cyan)' }}>Mismo día</span>
               </div>
-              <div style={{ fontSize: '0.9rem', color: '#666', fontStyle: 'italic' }}>
+              <div style={{ fontSize: '0.9rem', color: 'var(--neon-cyan)', fontStyle: 'italic' }}>
                 * Trabajo en esto en mi tiempo libre, pero siempre contesto
               </div>
             </div>
           </div>
 
           {/* Preguntas frecuentes */}
-          <div className="content-card">
+          <div className="content-card premium">
             <div className="card-header">
-              <h3 className="card-title">❓ Preguntas frecuentes</h3>
+              <h3 className="card-title neon-glow-cyan">❓ Preguntas frecuentes</h3>
             </div>
             <div className="card-body">
               <div style={{ marginBottom: '1.5rem' }}>
-                <strong>¿Haces envíos internacionales?</strong><br/>
-                <span style={{ color: '#666' }}>
+                <strong style={{ color: 'var(--anlaco-yellow-industrial)' }}>¿Haces envíos internacionales?</strong><br/>
+                <span style={{ color: 'var(--neon-cyan)' }}>
                   Sí, a través de Wallapop. Los costes dependen del destino.
                 </span>
               </div>
               <div style={{ marginBottom: '1.5rem' }}>
-                <strong>¿Tienes más stock del que aparece?</strong><br/>
-                <span style={{ color: '#666' }}>
+                <strong style={{ color: 'var(--anlaco-yellow-industrial)' }}>¿Tienes más stock del que aparece?</strong><br/>
+                <span style={{ color: 'var(--neon-cyan)' }}>
                   A veces sí. Actualizo semanalmente, pero pregúntame.
                 </span>
               </div>
               <div style={{ marginBottom: '1.5rem' }}>
-                <strong>¿Puedes conseguir algo específico?</strong><br/>
-                <span style={{ color: '#666' }}>
+                <strong style={{ color: 'var(--anlaco-yellow-industrial)' }}>¿Puedes conseguir algo específico?</strong><br/>
+                <span style={{ color: 'var(--neon-cyan)' }}>
                   Depende. Si es para un pedido grande, podemos hablar.
                 </span>
               </div>
               <div style={{ marginBottom: '1.5rem' }}>
-                <strong>¿Das soporte técnico?</strong><br/>
-                <span style={{ color: '#666' }}>
+                <strong style={{ color: 'var(--anlaco-yellow-industrial)' }}>¿Das soporte técnico?</strong><br/>
+                <span style={{ color: 'var(--neon-cyan)' }}>
                   Sí, consejos gratuitos basados en mi experiencia.
                 </span>
               </div>
@@ -193,18 +198,18 @@ function Contact() {
 
       {/* Enlaces alternativos */}
       <div className="mt-xxl">
-        <div className="content-card accent-anthracite" style={{ textAlign: 'center' }}>
+        <div className="content-card premium accent-anthracite" style={{ textAlign: 'center' }}>
           <div className="card-body">
-            <h3 className="mb-md">🚀 Otras formas de conectar</h3>
-            <p className="mb-lg">
+            <h3 className="mb-md neon-glow-cyan">🚀 Otras formas de conectar</h3>
+            <p className="mb-lg" style={{ color: 'var(--neon-cyan)' }}>
               Mientras implemento un sistema de contacto más avanzado, 
               también puedes encontrarme en:
             </p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link to="/shop" className="btn btn-primary">
+              <Link to="/shop" className="btn btn-primary premium-btn">
                 🛒 Ver mi tienda en Wallapop
               </Link>
-              <Link to="/designs" className="btn btn-outline-primary">
+              <Link to="/designs" className="btn btn-outline-primary premium-btn">
                 🎯 Revisar mis proyectos
               </Link>
             </div>

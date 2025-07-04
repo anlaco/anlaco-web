@@ -1,4 +1,4 @@
-/* Reset básico */
+/* Reset básico con tema cyberpunk */
 * {
   margin: 0;
   padding: 0;
@@ -7,11 +7,71 @@
 
 body {
   font-family: var(--primary-font);
-  color: var(--anlaco-anthracite);
-  background-color: #FFFFFF;
+  color: #ffffff;
+  background: var(--cyber-gradient);
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Animación de fondo cyberpunk premium */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(138, 43, 226, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 60% 80%, rgba(255, 20, 147, 0.08) 0%, transparent 50%);
+  z-index: -2;
+  animation: cyberpunkGlow 12s ease-in-out infinite alternate;
+}
+
+/* Efecto de líneas urbanas */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(90deg, transparent 0%, rgba(0, 255, 255, 0.03) 50%, transparent 100%),
+    linear-gradient(0deg, transparent 0%, rgba(255, 215, 0, 0.02) 50%, transparent 100%);
+  background-size: 200px 200px, 150px 150px;
+  z-index: -1;
+  animation: urbanLines 20s linear infinite;
+}
+
+@keyframes cyberpunkGlow {
+  0% { 
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+  100% { 
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes urbanLines {
+  0% { 
+    background-position: 0 0, 0 0;
+  }
+  100% { 
+    background-position: 200px 200px, -150px -150px;
+  }
 }
 
 main {
@@ -25,11 +85,48 @@ main {
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: var(--spacing-md);
   line-height: 1.3;
+  font-family: var(--accent-font);
+  color: var(--anlaco-yellow-industrial);
+  text-shadow: var(--text-shadow-neon);
+  letter-spacing: 1px;
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
+/* Títulos con efectos específicos */
+h1 { 
+  font-size: 2.8rem; 
+  font-weight: 900;
+  text-transform: uppercase;
+  animation: neonPulse 3s ease-in-out infinite alternate;
+}
+
+h2 { 
+  font-size: 2.2rem; 
+  font-weight: 700;
+  color: var(--cyber-neon-blue);
+  text-shadow: 0 0 15px var(--cyber-neon-blue);
+}
+
+h3 { 
+  font-size: 1.8rem; 
+  color: var(--steampunk-bronze);
+  text-shadow: 0 0 10px var(--steampunk-bronze);
+}
+
+@keyframes neonPulse {
+  0% { 
+    text-shadow: 
+      0 0 5px var(--anlaco-yellow-industrial),
+      0 0 10px var(--anlaco-yellow-industrial),
+      0 0 15px var(--anlaco-yellow-industrial);
+  }
+  100% { 
+    text-shadow: 
+      0 0 10px var(--anlaco-yellow-industrial),
+      0 0 20px var(--anlaco-yellow-industrial),
+      0 0 30px var(--anlaco-yellow-industrial),
+      0 0 40px var(--anlaco-yellow-industrial);
+  }
+}
 
 p {
   margin-bottom: var(--spacing-md);
@@ -45,10 +142,10 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Buttons */
+/* Buttons - Cyberpunk Style */
 .btn {
   display: inline-block;
-  font-family: var(--primary-font);
+  font-family: var(--secondary-font);
   font-weight: bold;
   text-align: center;
   vertical-align: middle;
@@ -56,47 +153,83 @@ a:hover {
   border: 2px solid transparent;
   padding: var(--spacing-sm) var(--spacing-lg);
   font-size: 1rem;
-  border-radius: 4px; /* Minimalist border-radius */
-  transition: all 0.2s ease-in-out;
-  text-decoration: none; /* Ensure links styled as buttons don't have underlines */
+  border-radius: 0; /* Sharp corners para estilo cyberpunk */
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto de escaneo cyberpunk */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
 }
 
 .btn-primary {
-  background-color: var(--anlaco-yellow-industrial);
+  background: linear-gradient(45deg, var(--anlaco-yellow-industrial), var(--cyber-neon-blue));
   color: var(--anlaco-anthracite);
-  border-color: var(--anlaco-yellow-industrial);
+  border: 2px solid var(--anlaco-yellow-industrial);
+  box-shadow: 
+    0 0 10px var(--anlaco-yellow-industrial),
+    inset 0 0 10px rgba(255, 215, 0, 0.1);
 }
 
 .btn-primary:hover, .btn-primary:focus {
-  background-color: #e6c200; /* Darker yellow */
-  border-color: #e6c200;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 0 20px var(--anlaco-yellow-industrial),
+    0 5px 15px rgba(0, 0, 0, 0.3),
+    inset 0 0 20px rgba(255, 215, 0, 0.2);
   color: var(--anlaco-anthracite);
   outline: none;
 }
 
 .btn-secondary {
-  background-color: var(--anlaco-anthracite);
-  color: var(--anlaco-yellow-industrial);
-  border-color: var(--anlaco-anthracite);
+  background: var(--cyber-gradient);
+  color: var(--cyber-neon-blue);
+  border: 2px solid var(--cyber-neon-blue);
+  box-shadow: 
+    0 0 10px var(--cyber-neon-blue),
+    inset 0 0 10px rgba(0, 255, 255, 0.1);
 }
 
 .btn-secondary:hover, .btn-secondary:focus {
-  background-color: #3a3a3a; /* Slightly lighter anthracite */
-  border-color: #3a3a3a;
-  color: var(--anlaco-yellow-industrial);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 0 20px var(--cyber-neon-blue),
+    0 5px 15px rgba(0, 0, 0, 0.3),
+    inset 0 0 20px rgba(0, 255, 255, 0.2);
+  color: var(--cyber-neon-blue);
   outline: none;
 }
 
-/* Alternative secondary button: Outline style */
 .btn-outline-primary {
   background-color: transparent;
   color: var(--anlaco-yellow-industrial);
-  border-color: var(--anlaco-yellow-industrial);
+  border: 2px solid var(--anlaco-yellow-industrial);
+  box-shadow: 0 0 5px var(--anlaco-yellow-industrial);
 }
 
 .btn-outline-primary:hover, .btn-outline-primary:focus {
-  background-color: var(--anlaco-yellow-industrial);
+  background: var(--anlaco-yellow-industrial);
   color: var(--anlaco-anthracite);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 0 15px var(--anlaco-yellow-industrial),
+    0 5px 15px rgba(0, 0, 0, 0.3);
   outline: none;
 }
 
@@ -112,55 +245,124 @@ a:hover {
   outline: none;
 }
 
-/* Content Cards */
+/* Content Cards - Cyberpunk Style */
 .content-card {
-  background-color: #FFFFFF; /* White or a very light gray background */
-  border: 1px solid #e0e0e0; /* Softer border for a modern look */
-  border-radius: 4px; /* Consistent with button border-radius */
+  background: linear-gradient(135deg, rgba(35, 35, 35, 0.9), rgba(26, 26, 26, 0.9));
+  border: 1px solid var(--cyber-neon-blue);
+  border-radius: 0; /* Sharp corners */
   padding: var(--spacing-lg);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
-  transition: box-shadow 0.3s ease-in-out;
-  overflow: hidden; /* Ensures content respects border-radius */
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(0, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+/* Efecto de líneas de escaneo */
+.content-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 255, 0.03) 2px,
+      rgba(0, 255, 255, 0.03) 4px
+    );
+  pointer-events: none;
 }
 
 .content-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Slightly more pronounced shadow on hover */
+  transform: translateY(-5px);
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.7),
+    0 0 30px rgba(0, 255, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-color: var(--anlaco-yellow-industrial);
 }
 
-/* Optional: Card Header, Body, Footer structure */
+/* Card Header con efecto steampunk */
 .card-header {
   padding-bottom: var(--spacing-md);
   margin-bottom: var(--spacing-md);
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 2px solid var(--steampunk-bronze);
+  position: relative;
+}
+
+.card-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: var(--anlaco-yellow-industrial);
+  box-shadow: 0 0 10px var(--anlaco-yellow-industrial);
 }
 
 .card-header h1, .card-header h2, .card-header h3, .card-header h4, .card-header h5, .card-header h6 {
-  margin-bottom: 0; /* Remove default bottom margin for headings in card header */
+  margin-bottom: 0;
 }
 
-.card-title { /* Specific class if needed for card titles */
-  color: var(--anlaco-anthracite);
+.card-title {
+  color: var(--anlaco-yellow-industrial);
+  font-family: var(--accent-font);
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .card-body {
-  /* Specific styles for card body if needed */
+  color: #e0e0e0;
+  font-family: var(--secondary-font);
+  line-height: 1.6;
 }
 
 .card-footer {
   padding-top: var(--spacing-md);
   margin-top: var(--spacing-md);
-  border-top: 1px solid #e0e0e0;
-  text-align: right; /* Example alignment for actions */
+  border-top: 1px solid rgba(0, 255, 255, 0.3);
+  text-align: right;
 }
 
-/* Card with industrial yellow accent */
+/* Card con acento amarillo - más brillante */
 .content-card.accent-yellow {
   border-top: 4px solid var(--anlaco-yellow-industrial);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(255, 215, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Card with anthracite accent */
+.content-card.accent-yellow:hover {
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.7),
+    0 0 40px rgba(255, 215, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Card con acento antracita - más steampunk */
 .content-card.accent-anthracite {
-  border-top: 4px solid var(--anlaco-anthracite);
+  border-top: 4px solid var(--steampunk-copper);
+  background: linear-gradient(135deg, rgba(50, 35, 25, 0.9), rgba(35, 35, 35, 0.9));
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(205, 127, 50, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.content-card.accent-anthracite:hover {
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.7),
+    0 0 40px rgba(205, 127, 50, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 /* Forms */
@@ -247,11 +449,51 @@ input[type="radio"]:focus {
   outline-offset: 2px;
 }
 
-/* Variables de color */
+/* Variables de color - CYBERPUNK STEAMPUNK THEME */
 :root {
+  /* Colores base */
   --anlaco-anthracite: #232323;
   --anlaco-yellow-industrial: #FFD700;
-  --primary-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  
+  /* Paleta Cyberpunk-Steampunk Premium */
+  --cyber-neon-blue: #00FFFF;
+  --cyber-neon-pink: #FF1493;
+  --cyber-neon-green: #39FF14;
+  --cyber-neon-purple: #8A2BE2;
+  --cyber-neon-orange: #FF6600;
+  --steampunk-bronze: #CD7F32;
+  --steampunk-copper: #B87333;
+  --steampunk-gold: #DAA520;
+  --dark-steel: #1a1a1a;
+  --darker-steel: #0f0f0f;
+  --urban-concrete: #2C2C2C;
+  --graffiti-red: #FF0040;
+  --graffiti-electric: #00FF88;
+  
+  /* Gradientes Premium */
+  --cyber-gradient: linear-gradient(135deg, var(--anlaco-anthracite), var(--dark-steel), var(--urban-concrete));
+  --neon-gradient: linear-gradient(45deg, var(--anlaco-yellow-industrial), var(--cyber-neon-blue));
+  --steampunk-gradient: linear-gradient(45deg, var(--steampunk-bronze), var(--steampunk-copper));
+  --urban-gradient: linear-gradient(135deg, var(--darker-steel), var(--urban-concrete), var(--dark-steel));
+  --premium-gradient: linear-gradient(135deg, var(--cyber-neon-purple), var(--cyber-neon-blue), var(--anlaco-yellow-industrial));
+  
+  /* Sombras y brillos Premium */
+  --neon-glow: 0 0 20px var(--anlaco-yellow-industrial);
+  --cyber-glow: 0 0 30px var(--cyber-neon-blue);
+  --premium-glow: 0 0 40px var(--cyber-neon-purple);
+  --text-shadow-neon: 0 0 10px var(--anlaco-yellow-industrial);
+  --text-shadow-cyber: 0 0 15px var(--cyber-neon-blue);
+  --text-shadow-premium: 0 0 20px var(--cyber-neon-purple);
+  --box-shadow-cyber: 0 4px 20px rgba(0, 255, 255, 0.3);
+  --box-shadow-premium: 0 8px 32px rgba(138, 43, 226, 0.4);
+  --box-shadow-urban: 0 4px 16px rgba(0, 0, 0, 0.6);
+  
+  /* Fuentes */
+  --primary-font: 'Orbitron', 'Courier New', monospace;
+  --secondary-font: 'Roboto Mono', 'Courier New', monospace;
+  --accent-font: 'Bebas Neue', Impact, sans-serif;
+  
+  /* Espaciado */
   --spacing-unit: 0.25rem;
   --spacing-xs: var(--spacing-unit);
   --spacing-sm: calc(var(--spacing-unit) * 2);
@@ -400,5 +642,359 @@ input[type="radio"]:focus {
   .btn {
     padding: var(--spacing-xs) var(--spacing-md); /* Slightly smaller padding for buttons */
     font-size: 0.9rem;
+  }
+}
+
+/* ==========================================
+   ESTILOS PREMIUM URBANOS - CYBERPUNK/STEAMPUNK
+   ========================================== */
+
+/* Card Premium con efectos de neón */
+.content-card.premium {
+  background: var(--urban-gradient);
+  border: 2px solid var(--cyber-neon-purple);
+  box-shadow: var(--box-shadow-premium);
+  position: relative;
+}
+
+.content-card.premium::before {
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(138, 43, 226, 0.05) 2px,
+      rgba(138, 43, 226, 0.05) 4px
+    );
+}
+
+.content-card.premium:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    var(--box-shadow-premium),
+    0 0 50px rgba(138, 43, 226, 0.5);
+  border-color: var(--anlaco-yellow-industrial);
+}
+
+/* Elementos decorativos urbanos */
+.urban-line {
+  position: relative;
+}
+
+.urban-line::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  width: 4px;
+  height: 60%;
+  background: linear-gradient(180deg, 
+    var(--cyber-neon-blue), 
+    var(--anlaco-yellow-industrial), 
+    var(--cyber-neon-blue)
+  );
+  transform: translateY(-50%);
+  box-shadow: 0 0 10px var(--cyber-neon-blue);
+  animation: neonFlicker 2s infinite alternate;
+}
+
+@keyframes neonFlicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Indicadores de precio premium */
+.price-tag {
+  position: relative;
+  display: inline-block;
+  font-family: var(--accent-font);
+  font-size: 1.8rem;
+  color: var(--anlaco-yellow-industrial);
+  text-shadow: var(--text-shadow-neon);
+  padding: 0.5rem 1rem;
+  background: var(--darker-steel);
+  border: 2px solid var(--anlaco-yellow-industrial);
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%);
+  margin-right: 25px;
+}
+
+.price-tag::after {
+  content: attr(data-margin);
+  position: absolute;
+  top: -25px;
+  right: 0;
+  font-size: 0.7rem;
+  color: var(--cyber-neon-green);
+  background: var(--darker-steel);
+  padding: 2px 8px;
+  border: 1px solid var(--cyber-neon-green);
+  border-radius: 0;
+}
+
+/* Efectos de texto premium */
+.cyber-text {
+  font-family: var(--primary-font);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: var(--premium-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  text-shadow: none;
+  position: relative;
+}
+
+.cyber-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--cyber-neon-blue);
+  z-index: -1;
+  animation: cyberGlitch 3s infinite;
+}
+
+@keyframes cyberGlitch {
+  0%, 90%, 100% { 
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  95% { 
+    transform: translate(2px, 1px);
+    opacity: 0.8;
+  }
+}
+
+/* Grilla urbana decorativa */
+.urban-grid {
+  position: relative;
+  background-image: 
+    linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Separadores con estilo neón */
+.neon-divider {
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--cyber-neon-blue), 
+    var(--anlaco-yellow-industrial), 
+    var(--cyber-neon-blue), 
+    transparent
+  );
+  margin: 2rem 0;
+  box-shadow: 0 0 10px var(--cyber-neon-blue);
+  animation: neonSweep 4s ease-in-out infinite;
+}
+
+@keyframes neonSweep {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* Badges de stock con estilo urbano */
+.stock-badge {
+  display: inline-block;
+  padding: 0.2rem 0.8rem;
+  font-size: 0.8rem;
+  font-family: var(--secondary-font);
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.stock-badge.high {
+  background: var(--cyber-neon-green);
+  color: var(--darker-steel);
+  box-shadow: 0 0 10px var(--cyber-neon-green);
+}
+
+.stock-badge.medium {
+  background: var(--anlaco-yellow-industrial);
+  color: var(--darker-steel);
+  box-shadow: 0 0 10px var(--anlaco-yellow-industrial);
+}
+
+.stock-badge.low {
+  background: var(--graffiti-red);
+  color: white;
+  box-shadow: 0 0 10px var(--graffiti-red);
+  animation: urgentPulse 1.5s infinite;
+}
+
+@keyframes urgentPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Efectos hover premium para links */
+.premium-link {
+  position: relative;
+  color: var(--cyber-neon-blue);
+  text-decoration: none;
+  font-family: var(--secondary-font);
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.premium-link::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--premium-gradient);
+  transition: width 0.3s ease;
+}
+
+.premium-link:hover::before {
+  width: 100%;
+}
+
+.premium-link:hover {
+  color: var(--anlaco-yellow-industrial);
+  text-shadow: 0 0 10px var(--anlaco-yellow-industrial);
+  transform: translateY(-1px);
+}
+
+/* Efectos de parpadeo para elementos importantes */
+.blink-neon {
+  animation: blinkNeon 2s infinite;
+}
+
+@keyframes blinkNeon {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0.7; }
+}
+
+/* Sombras de profundidad premium */
+.depth-shadow {
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24),
+    0 0 20px rgba(0, 255, 255, 0.1);
+}
+
+.depth-shadow:hover {
+  box-shadow: 
+    0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22),
+    0 0 30px rgba(0, 255, 255, 0.2);
+}
+
+/* Premium Input Styles */
+.premium-input {
+  background-color: var(--anlaco-slate-gray);
+  border: 1px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  border-radius: 4px;
+  padding: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.premium-input:focus {
+  outline: none;
+  border-color: var(--neon-yellow);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  background-color: var(--anlaco-anthracite);
+}
+
+.premium-input option {
+  background-color: var(--anlaco-slate-gray);
+  color: var(--neon-cyan);
+}
+
+/* Premium Header Styles */
+.premium-header {
+  background: linear-gradient(135deg, var(--anlaco-anthracite), var(--anlaco-slate-gray));
+  border-bottom: 2px solid var(--neon-cyan);
+  box-shadow: 0 2px 20px rgba(0, 255, 255, 0.1);
+}
+
+.logo-link:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 15px var(--neon-yellow);
+}
+
+/* Premium Navigation */
+.premium-nav .nav-link:hover {
+  background: linear-gradient(45deg, rgba(0, 255, 255, 0.1), rgba(255, 215, 0, 0.1));
+  border-color: var(--neon-cyan);
+  text-shadow: 0 0 5px currentColor;
+}
+
+/* Premium Footer */
+.premium-footer {
+  background: linear-gradient(135deg, var(--anlaco-anthracite), var(--anlaco-slate-gray));
+}
+
+.footer-link:hover {
+  text-shadow: 0 0 10px currentColor;
+  transform: translateX(5px);
+}
+
+/* Tech badges */
+.tech-badge {
+  background: linear-gradient(45deg, var(--neon-cyan), var(--neon-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
+}
+
+/* Info items animation */
+.info-item {
+  transition: all 0.3s ease;
+}
+
+.info-item:hover {
+  transform: translateX(5px);
+  text-shadow: 0 0 5px var(--neon-cyan);
+}
+
+/* Enhanced price-tag with glow effect */
+.price-tag {
+  display: inline-block;
+  background: linear-gradient(45deg, var(--neon-yellow), var(--anlaco-yellow-industrial));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 10px var(--neon-yellow));
+  font-weight: bold;
+  animation: price-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes price-glow {
+  0% { filter: drop-shadow(0 0 5px var(--neon-yellow)); }
+  100% { filter: drop-shadow(0 0 15px var(--neon-yellow)); }
+}
+
+/* Footer sections */
+.footer-section {
+  padding: 1rem;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(255, 215, 0, 0.05));
+  border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 768px) {
+  .premium-header {
+    padding: 0.5rem 0;
+  }
+  
+  .tagline {
+    display: none;
+  }
+  
+  .premium-nav {
+    backdrop-filter: blur(10px);
+    background: rgba(35, 35, 35, 0.95);
   }
 }

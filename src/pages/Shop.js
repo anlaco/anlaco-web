@@ -4,41 +4,42 @@ import { products } from '../data/products';
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="content-card" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <div className="content-card premium" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       <div style={{ flexGrow: 1 }}>
         <img 
           src={product.imageUrl} 
           alt={product.name} 
           style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '4px', marginBottom: '1rem' }} 
         />
-        <h3 className="mb-md">{product.name}</h3>
-        <p className="mb-md" style={{ color: '#666' }}>{product.shortDescription}</p>
+        <h3 className="mb-md neon-glow-yellow">{product.name}</h3>
+        <p className="mb-md" style={{ color: 'var(--neon-cyan)' }}>{product.shortDescription}</p>
         
         {/* Precio destacado */}
         <div className="mb-md">
-          <span style={{ 
+          <span className="price-tag" style={{ 
             fontSize: '1.5rem', 
             color: 'var(--anlaco-yellow-industrial)', 
-            fontWeight: 'bold' 
+            fontWeight: 'bold',
+            textShadow: '0 0 10px var(--neon-yellow)'
           }}>
             {product.price}
           </span>
-          <span style={{ marginLeft: '0.5rem', color: '#666', fontSize: '0.9rem' }}>
+          <span className="badge-premium" style={{ marginLeft: '0.5rem', color: 'var(--neon-cyan)', fontSize: '0.9rem' }}>
             (Stock: {product.stock})
           </span>
         </div>
 
         {/* Dimensiones */}
         <div className="mb-md">
-          <strong>📏 Dimensiones:</strong>
-          <div style={{ fontSize: '0.9rem', color: '#666' }}>
+          <strong style={{ color: 'var(--anlaco-yellow-industrial)' }}>📏 Dimensiones:</strong>
+          <div style={{ fontSize: '0.9rem', color: 'var(--neon-cyan)' }}>
             {product.dimensions.width} × {product.dimensions.height} × {product.dimensions.depth}
           </div>
         </div>
 
         {/* Categoría */}
         <div className="mb-md">
-          <span className="btn btn-outline-secondary" style={{ fontSize: '0.8rem', padding: '0.25rem 0.5rem' }}>
+          <span className="badge-premium" style={{ fontSize: '0.8rem', padding: '0.25rem 0.5rem' }}>
             {product.category}
           </span>
         </div>
@@ -50,7 +51,7 @@ const ProductCard = ({ product }) => {
           href={product.wallapopUrl} 
           target="_blank" 
           rel="noopener noreferrer"
-          className="btn btn-primary"
+          className="btn btn-primary premium-btn"
           style={{ width: '100%', textAlign: 'center', textDecoration: 'none' }}
         >
           🛒 Comprar en Wallapop
@@ -88,14 +89,14 @@ function Shop() {
 
   return (
     <div className="py-lg">
-      <h1 className="mb-lg">🛒 Tienda de Componentes</h1>
+      <h1 className="mb-lg neon-glow-yellow">🛒 Tienda de Componentes</h1>
       <div className="mb-xxl">
-        <div className="content-card accent-yellow">
+        <div className="content-card premium accent-yellow">
           <div className="card-body">
-            <h3 className="mb-md">📦 Material de Maker para Makers</h3>
-            <p className="mb-md">
+            <h3 className="mb-md neon-glow-cyan">📦 Material de Maker para Makers</h3>
+            <p className="mb-md" style={{ color: 'var(--neon-cyan)' }}>
               Todo el material que ves aquí lo he comprado al por mayor para mis proyectos. 
-              Ahora está disponible para ti a <strong>precio de coste + gastos de envío</strong>.
+              Ahora está disponible para ti a <strong style={{ color: 'var(--anlaco-yellow-industrial)' }}>precio de coste + gastos de envío</strong>.
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
               <div>✅ <strong>Calidad probada</strong><br/>Usados en mis builds</div>
@@ -109,17 +110,17 @@ function Shop() {
 
       {/* Filtros y Ordenación */}
       <div className="mb-xxl">
-        <div className="content-card">
-          <h3 className="mb-md">🔍 Filtros</h3>
+        <div className="content-card premium">
+          <h3 className="mb-md neon-glow-cyan">🔍 Filtros</h3>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
             <div>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: 'var(--anlaco-yellow-industrial)' }}>
                 Categoría:
               </label>
               <select 
                 value={selectedCategory} 
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="form-control"
+                className="form-control premium-input"
                 style={{ minWidth: '200px' }}
               >
                 <option value="all">Todas las categorías</option>
@@ -130,13 +131,13 @@ function Shop() {
             </div>
             
             <div>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: 'var(--anlaco-yellow-industrial)' }}>
                 Ordenar por:
               </label>
               <select 
                 value={sortBy} 
                 onChange={(e) => setSortBy(e.target.value)}
-                className="form-control"
+                className="form-control premium-input"
                 style={{ minWidth: '200px' }}
               >
                 <option value="name">Nombre</option>
@@ -146,7 +147,7 @@ function Shop() {
             </div>
           </div>
           
-          <div style={{ fontSize: '0.9rem', color: '#666' }}>
+          <div style={{ fontSize: '0.9rem', color: 'var(--neon-cyan)' }}>
             Mostrando {sortedProducts.length} de {products.length} productos
           </div>
         </div>
