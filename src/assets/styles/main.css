@@ -1,3 +1,31 @@
+/* Botón SOON/deshabilitado con alto contraste */
+.btn-soon, .btn[disabled], .btn.disabled {
+  background: linear-gradient(90deg, #232323 70%, var(--cyber-neon-blue) 100%);
+  color: #fff !important;
+  border: 2px dashed var(--cyber-neon-blue);
+  opacity: 1 !important;
+  box-shadow: 0 0 10px var(--cyber-neon-blue), 0 0 0 2px #181818;
+  filter: none;
+  text-shadow: 0 2px 8px #000, 0 0 2px var(--cyber-neon-blue);
+  cursor: not-allowed;
+  font-weight: bold;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.btn-soon .soon-label, .btn[disabled] .soon-label, .btn.disabled .soon-label {
+  color: #fff !important;
+  text-shadow: 0 2px 8px #000, 0 0 2px var(--cyber-neon-blue);
+  font-size: 1.1em;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+
+.btn-soon svg, .btn[disabled] svg, .btn.disabled svg {
+  filter: drop-shadow(0 0 4px var(--cyber-neon-blue));
+}
 /* Reset básico con tema cyberpunk */
 * {
   margin: 0;
@@ -704,31 +732,60 @@ input[type="radio"]:focus {
 }
 
 /* Indicadores de precio premium */
+
+/* Unificado y mejorado: price-tag siempre visible y legible */
 .price-tag {
   position: relative;
   display: inline-block;
   font-family: var(--accent-font);
-  font-size: 1.8rem;
-  color: var(--anlaco-yellow-industrial);
-  text-shadow: var(--text-shadow-neon);
-  padding: 0.5rem 1rem;
-  background: var(--darker-steel);
+  font-size: 2rem;
+  color: #181818;
+  background: linear-gradient(90deg, var(--anlaco-yellow-industrial) 60%, var(--neon-yellow) 100%);
   border: 2px solid var(--anlaco-yellow-industrial);
-  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%);
-  margin-right: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 12px 2px var(--anlaco-yellow-industrial), 0 0 0 4px rgba(0,0,0,0.18);
+  text-shadow: 0 2px 8px #fff, 0 0 2px #000, 0 0 1px var(--anlaco-yellow-industrial);
+  padding: 0.4rem 1.2rem;
+  margin-right: 18px;
+  z-index: 1;
+  clip-path: none;
+  filter: none;
+  animation: price-glow 2s ease-in-out infinite alternate;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
+/* Variante para fondos muy oscuros o degradados */
+.price-tag-contrast {
+  background: #181818;
+  color: var(--anlaco-yellow-industrial);
+  border: 2px solid var(--neon-yellow);
+  box-shadow: 0 0 16px 2px var(--neon-yellow), 0 0 0 4px rgba(0,0,0,0.28);
+  text-shadow: 0 2px 8px var(--neon-yellow), 0 0 2px #000;
+}
+
+
+/* Badge de margen solo visible si hay valor y nunca tapa el texto */
 .price-tag::after {
   content: attr(data-margin);
+  display: none;
+}
+.price-tag[data-margin]:not([data-margin=""]):not([data-margin="null"]):not([data-margin="undefined"])::after {
+  display: inline-block;
   position: absolute;
-  top: -25px;
-  right: 0;
-  font-size: 0.7rem;
-  color: var(--cyber-neon-green);
-  background: var(--darker-steel);
-  padding: 2px 8px;
-  border: 1px solid var(--cyber-neon-green);
-  border-radius: 0;
+  top: -2.2em;
+  right: 0.5em;
+  font-size: 0.8rem;
+  color: #fff;
+  background: var(--cyber-neon-green);
+  padding: 2px 10px;
+  border: 1.5px solid #fff;
+  border-radius: 6px;
+  font-family: var(--secondary-font);
+  font-weight: bold;
+  box-shadow: 0 0 8px var(--cyber-neon-green);
+  text-shadow: 0 1px 2px #000;
+  z-index: 2;
+  white-space: nowrap;
 }
 
 /* Efectos de texto premium */
@@ -958,17 +1015,8 @@ input[type="radio"]:focus {
   text-shadow: 0 0 5px var(--neon-cyan);
 }
 
-/* Enhanced price-tag with glow effect */
-.price-tag {
-  display: inline-block;
-  background: linear-gradient(45deg, var(--neon-yellow), var(--anlaco-yellow-industrial));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 0 10px var(--neon-yellow));
-  font-weight: bold;
-  animation: price-glow 2s ease-in-out infinite alternate;
-}
+
+/* Eliminado el duplicado de .price-tag para evitar conflictos */
 
 @keyframes price-glow {
   0% { filter: drop-shadow(0 0 5px var(--neon-yellow)); }
